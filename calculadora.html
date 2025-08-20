@@ -1,0 +1,93 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mini Calculadora</title>
+    </head>
+    <body>
+        
+        <h1>Mini Calculadora.</h1>
+
+    <label for="num1">Digite o Primeiro Número :</label>
+    <input type="number" id="num1">
+    <br><br>
+
+    <label for="num2">Digite o Segundo Número :</label>
+    <input type="number" id="num2">
+    <br><br>
+
+    <button onclick="somar()">Somar</button>
+    <button onclick="subtrair()">Subtrair</button>
+    <button onclick="dividir()">Dividir</button>
+    <button onclick="multiplicar()">Multiplicar</button>
+    <button onclick="potencia()">Potencia</button>
+    <button onclick="resto()">Resto da divisão</button>
+    <button onclick="limpar()">Limpar</button>
+
+    <h2 id="resultado"></h2>
+
+        <script>
+
+            function somar(){
+                let a = Number(document.getElementById("num1").value)
+                let b = Number(document.getElementById("num2").value)
+
+                let soma = a + b;
+                document.getElementById("resultado").innerText = "O resultado da soma é : " + soma
+            }
+
+            function subtrair(){
+
+                let a = Number(document.getElementById("num1").value);
+                let b = Number(document.getElementById("num2").value);
+                
+                document.getElementById("resultado").innerText = "O resultado da Subtração é : " +  (a - b);
+
+            }
+
+            function dividir(){
+
+                let a = Number(document.getElementById("num1").value);
+                let b = Number(document.getElementById("num2").value);
+
+            if (b===0){
+                document.getElementById("resultado").innerText = "Erro: não é possível dividir por zero!"
+            } else{
+                document.getElementById("resultado").innerText = "O resultado da divisão é :  " + (a / b);
+            }
+
+            }
+
+            function multiplicar(){
+
+                let a = Number(document.getElementById("num1").value);
+                let b = Number(document.getElementById("num2").value);
+                document.getElementById("resultado").innerText = "O resultado da Multiplicação é : "  + (a * b);
+
+            }
+
+            function potencia(){
+                let a = Number(document.getElementById("num1").value)
+                let b = Number(document.getElementById("num2").value)
+                document.getElementById("resultado").innerText = "O resultado da potência é : " + (a**b);
+            }
+
+            function resto(){
+                let a = Number(document.getElementById("num1").value);
+                let b = Number(document.getElementById("num2").value);
+                document.getElementById("resultado").innerText = "O resultado do resto da divisão é : " + (a%b);
+
+            }
+
+            function limpar(){
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            document.getElementById("resultado").innerText = "";
+
+            }
+
+        </script>
+
+    </body>
+    </html>
