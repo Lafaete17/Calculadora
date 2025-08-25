@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Calculadora com Histórico</title>
+</head>
+<body>
+
+<h1>Mini Calculadora com Histórico</h1>
+<label for="num1">Digite o Primeiro Número :</label>
+<input type="number" id="num1">
+<br><br>
+
+<label for="num2">Digite o Segundo Número :</label>
+<input type="number" id="num2">
+<br><br>
+
+<div>
+    <button onclick="somar()">Somar</button>
+    <button onclick="subtrair()">Subtrair</button>
+    <button onclick="dividir()">Dividir</button>
+    <button onclick="multiplicar()">Multiplicar</button>
+    <button onclick="potencia()">Potência</button>
+    <button onclick="resto()">Resto</button>
+    <button onclick="limpar()">Limpar</button>
+</div>
+
+<h2 id="resultado"></h2>
+
+<div id="historico">
+    <h3>Histórico de Operações</h3>
+    <ul id="listaHistorico"></ul>
+</div>
+
+<script>
+    function adicionarHistorico(texto) {
+        const ul = document.getElementById("listaHistorico");
+        const li = document.createElement("li");
+        li.textContent = texto;
+        ul.appendChild(li);
+    }
+
+    function somar(){
+        let a = Number(document.getElementById("num1").value);
+        let b = Number(document.getElementById("num2").value);
+        let resultado = a + b;
+        document.getElementById("resultado").innerText = "O resultado da soma é: " + resultado;
+        adicionarHistorico(`${a} + ${b} = ${resultado}`);
+    }
+
+    function subtrair(){
+        let a = Number(document.getElementById("num1").value);
+        let b = Number(document.getElementById("num2").value);
+        let resultado = a - b;
+        document.getElementById("resultado").innerText = "O resultado da subtração é: " + resultado;
+        adicionarHistorico(`${a} - ${b} = ${resultado}`);
+    }
+
+    function dividir(){
+        let a = Number(document.getElementById("num1").value);
+        let b = Number(document.getElementById("num2").value);
+        if(b === 0){
+            document.getElementById("resultado").innerText = "Erro: não é possível dividir por zero!";
+            adicionarHistorico(`Divisão por zero tentativa: ${a} / ${b}`);
+        } else {
+            let resultado = a / b;
+            document.getElementById("resultado").innerText = "O resultado da divisão é: " + resultado;
+            adicionarHistorico(`${a} / ${b} = ${resultado}`);
+        }
+    }
+
+    function multiplicar(){
+        let a = Number(document.getElementById("num1").value);
+        let b = Number(document.getElementById("num2").value);
+        let resultado = a * b;
+        document.getElementById("resultado").innerText = "O resultado da multiplicação é: " + resultado;
+        adicionarHistorico(`${a} * ${b} = ${resultado}`);
+    }
+
+    function potencia(){
+        let a = Number(document.getElementById("num1").value);
+        let b = Number(document.getElementById("num2").value);
+        let resultado = a ** b;
+        document.getElementById("resultado").innerText = "O resultado da potência é: " + resultado;
+        adicionarHistorico(`${a} ** ${b} = ${resultado}`);
+    }
+
+    function resto(){
+        let a = Number(document.getElementById("num1").value);
+        let b = Number(document.getElementById("num2").value);
+        let resultado = a % b;
+        document.getElementById("resultado").innerText = "O resultado do resto da divisão é: " + resultado;
+        adicionarHistorico(`${a} % ${b} = ${resultado}`);
+    }
+
+    function limpar(){
+        document.getElementById("num1").value = "";
+        document.getElementById("num2").value = "";
+        document.getElementById("resultado").innerText = "";
+        document.getElementById("listaHistorico").innerHTML = "";
+    }
+</script>
+
+</body>
+</html>
